@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	
-//	"strings"
+	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
@@ -13,27 +13,12 @@ import (
 	"github.com/apcera/termtables"
 )
 
-func ListInstances(region string) {
+func ListInstances(region string, filter string) {
 	sess := session.Must(session.NewSession())
+	fmt.Printf("Used region: %v\n", region)
 
-	nameFilter := "Dashboard" //os.Args[1]
 	svc := ec2.New(sess, &aws.Config{Region: aws.String(region)})
-	fmt.Printf("listing instances with tag %v in: %v\n", nameFilter, region)
-
-	params := &ec2.DescribeInstancesInput{
-	/*
-		Filters: []*ec2.Filter{
-			{
-				Name: aws.String("tag:Name"),
-				Values: []*string{
-					aws.String(strings.Join([]string{"*", nameFilter, "*"}, "")),
-				},
-			},
-		},
-	*/		
-
-	}
-	resp, err := svc.DescribeInstances(params)
+	resp, err := svc.DescribeInstances(getFilter(filter))
 	if err != nil {
 		fmt.Println("there was an error listing instances in", region, err.Error())
 		log.Fatal(err.Error())
@@ -52,4 +37,28 @@ func ListInstances(region string) {
 
 	fmt.Println("")
 	fmt.Println(table.Render())
+}
+
+func getFilter(filter string) *ec2.DescribeInstancesInput {
+	var describeInstancesInput *ec2.DescribeInstancesInput
+	if filter != "" {
+		fmt.Printf("Active filter: %v\n", filter)
+		var filters []*ec2.Filter
+		splittedFilterResults := strings.Split(filter, ",")
+		for i := range splittedFilterResults {
+			tags := strings.Split(strings.TrimSpace(splittedFilterResults[i]), ":")
+			filter := &ec2.Filter {
+				Name: aws.String("tag:" + tags[0]),
+				Values: []*string{
+					aws.String(strings.Join([]string{"*", tags[1], "*"}, "")),
+				},
+			}
+			filters = append(filters, filter)
+		}
+		describeInstancesInput = &ec2.DescribeInstancesInput{
+			Filters: filters,
+		}
+	}	
+
+	return describeInstancesInput
 }

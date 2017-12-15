@@ -13,13 +13,12 @@ import (
 	"github.com/apcera/termtables"
 )
 
-func ListInstances() {
+func ListInstances(region string) {
 	sess := session.Must(session.NewSession())
 
 	nameFilter := "Dashboard" //os.Args[1]
-	awsRegion := "eu-central-1"
-	svc := ec2.New(sess, &aws.Config{Region: aws.String(awsRegion)})
-	fmt.Printf("listing instances with tag %v in: %v\n", nameFilter, awsRegion)
+	svc := ec2.New(sess, &aws.Config{Region: aws.String(region)})
+	fmt.Printf("listing instances with tag %v in: %v\n", nameFilter, region)
 
 	params := &ec2.DescribeInstancesInput{
 	/*
@@ -36,7 +35,7 @@ func ListInstances() {
 	}
 	resp, err := svc.DescribeInstances(params)
 	if err != nil {
-		fmt.Println("there was an error listing instances in", awsRegion, err.Error())
+		fmt.Println("there was an error listing instances in", region, err.Error())
 		log.Fatal(err.Error())
 	}
 	//fmt.Printf("%+v\n", *resp)

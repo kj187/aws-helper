@@ -5,14 +5,14 @@ import (
 	"github.com/kj187/aws-inspector/commands/ec2"
 )
 
-func init() {
-	RootCmd.AddCommand(listCommand)
-}
-
 var listCommand = &cobra.Command{
 	Use: "ec2:list",
 	Short: "List all EC2 instances",
 	Run: func(cmd *cobra.Command, args []string) {
-		ec2.ListInstances()
+		ec2.ListInstances(region)
 	},
+}
+
+func init() {
+	RootCmd.AddCommand(listCommand)
 }

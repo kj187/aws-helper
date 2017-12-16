@@ -11,8 +11,8 @@ var region string
 const DefaultRegion = "eu-central-1"
 
 var RootCmd = &cobra.Command{
-	Use: "aws-inspector",
-	Short: "AWS Inspector",
+	Use: "aws-helper",
+	Short: "AWS CLI Helper",
 	Run: func(cmd *cobra.Command, args []string) {},
 }
 
@@ -36,7 +36,7 @@ func Execute() {
 	}*/
 
 	if err := RootCmd.Execute(); err != nil {
-		fmt.Fprintf(os.Stderr, "aws-inspector error: %s\n", err)
+		fmt.Fprintf(os.Stderr, "aws-helper error: %s\n", err)
 		RootCmd.Usage()
 		os.Exit(1)
 	}

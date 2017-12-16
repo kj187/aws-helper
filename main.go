@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"github.com/kj187/aws-inspector/commands"
+	"github.com/kj187/aws-helper/commands"
 )
 
 func main() {
 	fmt.Println(`
-____ _ _ _ ____    _ _  _ ____ ___  ____ ____ ___ ____ ____ 
-|__| | | | [__     | |\ | [__  |__] |___ |     |  |  | |__/ 
-|  | |_|_| ___]    | | \| ___] |    |___ |___  |  |__| |  \ 
+____ _ _ _ ____    _  _ ____ _    ___  ____ ____ 
+|__| | | | [__     |__| |___ |    |__] |___ |__/ 
+|  | |_|_| ___]    |  | |___ |___ |    |___ |  \ 
 © Julian Kleinhans - @kj187	
 	`)
 

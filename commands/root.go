@@ -17,7 +17,7 @@ var RootCmd = &cobra.Command{
 }
 
 func init() {
-	RootCmd.PersistentFlags().StringVarP(&region, "region", "r", DefaultRegion, "Set region")
+	RootCmd.PersistentFlags().StringVarP(&region, "region", "r", DefaultRegion, "set region")
 }
 
 func Execute() {

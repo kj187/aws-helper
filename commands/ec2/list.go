@@ -32,7 +32,7 @@ func ListInstances(region string, tags []string, filters []string, columns []str
 	}
 
 	table := termtables.CreateTable()
-	instances := ec2.FindEc2InstancesByTags(region, tags, filters)
+	instances := ec2.FindEc2Instances(region, tags, filters)
 
 	for _, removeColumn := range removeColumns {
 		for idx, columnName := range defaultColumns {
@@ -67,6 +67,6 @@ func ListInstances(region string, tags []string, filters []string, columns []str
 		}
 	}
 
-	fmt.Println("")
+	fmt.Println("\n")
 	fmt.Println(table.Render())	
 }

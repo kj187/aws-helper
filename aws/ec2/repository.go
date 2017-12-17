@@ -24,7 +24,7 @@ type Instance struct {
     Tags []*ec2.Tag `type:"list"`
 }
 
-func FindEc2InstancesByTags(region string, tags []string, filters []string) []*Instance {
+func FindEc2Instances(region string, tags []string, filters []string) []*Instance {
 	sess := session.Must(session.NewSession())
 	svc := ec2.New(sess, &aws.Config{Region: aws.String(region)})
 	resp, err := svc.DescribeInstances(buildDescribeInstancesInput(tags, filters))

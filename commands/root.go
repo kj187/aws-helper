@@ -7,17 +7,21 @@ import (
 )
 
 var region string
+var profile string
 
 const DefaultRegion = "eu-central-1"
 
 var RootCmd = &cobra.Command{
 	Use: "aws-helper",
 	Short: "AWS CLI Helper",
+	Long: "AWS Helper is a lightweight CLI tool to work with AWS.\nAuthor: Julian Kleinhans <mail@kj187.de>, alias @kj187",
+	Example: "aws-helper ec2:list -c Name -C KeyName -f AZ:eu-central-1",
 	Run: func(cmd *cobra.Command, args []string) {},
 }
 
 func init() {
 	RootCmd.PersistentFlags().StringVarP(&region, "region", "r", DefaultRegion, "set region")
+	RootCmd.PersistentFlags().StringVarP(&profile, "profile", "p", "", "set aws profile")
 }
 
 func Execute() {

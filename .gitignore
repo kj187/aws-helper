@@ -1,0 +1,10 @@
+.DS_Store
+.cache
+.idea
+.temp
+dist
+coverage
+junit.xml
+/vendor
+bin
+/artifacts

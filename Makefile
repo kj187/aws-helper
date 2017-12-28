@@ -9,6 +9,11 @@ setup:
 	go get -u gopkg.in/alecthomas/gometalinter.v2
 	dep ensure
 
+setup-coverage:
+	go get golang.org/x/tools/cmd/cover
+	go get github.com/axw/gocov/gocov
+	go get github.com/mattn/goveralls
+
 dep:
 	dep ensure	
 

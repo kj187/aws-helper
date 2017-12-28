@@ -1,5 +1,9 @@
 # AWS Helper
 
+[![AwsHelper](https://godoc.org/github.com/kj187/aws-helper?status.svg)](https://godoc.org/github.com/kj187/aws-helper)
+[![Build Status](https://travis-ci.org/kj187/aws-helper.svg?branch=master)](https://travis-ci.org/kj187/aws-helper)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kj187/aws-helper)](https://goreportcard.com/report/github.com/kj187/aws-helper)
+
 The AWS Helper is a go based command line interface utility for AWS
 
 ## Installation
@@ -73,7 +77,7 @@ Use "aws-helper [command] --help" for more information about a command.
 
 ### Region
 
-The default region is `eu-central-1`. You can define the region with an environment variable `AWS_DEFAULT_REGION` or with the flag `--region``
+The default region is `eu-central-1`. You can define the region with an environment variable `AWS_DEFAULT_REGION` or with the flag `--region`
 
 Example with env var:
 ``` shell

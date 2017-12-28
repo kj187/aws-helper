@@ -2,10 +2,15 @@ language: go
 
 sudo: false
 
+install:
+    - make setup
+    - make dep
+
 before_script:
     - go version
-    - make setup 
-    - make dep
+
+script:
+    - make test
 
 go:
 #    - 1.4.x

@@ -3,6 +3,7 @@
 [![AwsHelper](https://godoc.org/github.com/kj187/aws-helper?status.svg)](https://godoc.org/github.com/kj187/aws-helper)
 [![Build Status](https://travis-ci.org/kj187/aws-helper.svg?branch=master)](https://travis-ci.org/kj187/aws-helper)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kj187/aws-helper)](https://goreportcard.com/report/github.com/kj187/aws-helper)
+[![Coverage Status](https://coveralls.io/repos/github/kj187/aws-helper/badge.svg?branch=master)](https://coveralls.io/github/kj187/aws-helper?branch=master)
 
 The AWS Helper is a go based command line interface utility for AWS
 

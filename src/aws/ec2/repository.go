@@ -10,6 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/ec2"
 )
 
+// Instance struct
 type Instance struct {
 	_ struct{} `type:"structure"`
 
@@ -25,6 +26,7 @@ type Instance struct {
 	Tags             []*ec2.Tag `type:"list"`
 }
 
+// GetInstances get instances by a specific region an optional tags or filters
 func GetInstances(region string, tags []string, filters []string) []*Instance {
 	sess := session.Must(session.NewSession())
 	svc := ec2.New(sess, &aws.Config{Region: aws.String(region)})
@@ -36,7 +38,7 @@ func GetInstances(region string, tags []string, filters []string) []*Instance {
 	//fmt.Printf("%+v\n", *resp)
 
 	var instances []*Instance
-	for idx, _ := range resp.Reservations {
+	for idx := range resp.Reservations {
 		for _, inst := range resp.Reservations[idx].Instances {
 
 			// Workaround because PublicIpAddress is not available sometimes
